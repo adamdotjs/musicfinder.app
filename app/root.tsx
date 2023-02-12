@@ -1,5 +1,6 @@
 import type { MetaFunction } from "@remix-run/node";
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from "@remix-run/react";
+import Header from "./components/Header";
 import styles from "./styles/app.css";
 
 export function links() {
@@ -14,13 +15,16 @@ export const meta: MetaFunction = () => ({
 
 export default function App() {
 	return (
-		<html lang="en">
+		<html lang="en" className="h-full">
 			<head>
 				<Meta />
 				<Links />
 			</head>
-			<body className="bg-black text-white">
-				<Outlet />
+			<body className="h-full bg-black text-white">
+				<Header />
+				<main>
+					<Outlet />
+				</main>
 				<ScrollRestoration />
 				<Scripts />
 				<LiveReload />
