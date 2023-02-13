@@ -19,12 +19,10 @@ const buttonStyles = cva("rounded-full px-9 py-4 font-bold border-2 transition-a
 	},
 });
 
-function Button({ className, variant, children, ...props }: Props) {
+export function Button({ className, variant, children, ...props }: Props) {
 	return (
 		<button className={buttonStyles({ variant, className })} {...props}>
 			{children}
 		</button>
 	);
 }
-
-export { Button };

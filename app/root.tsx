@@ -1,5 +1,6 @@
 import type { MetaFunction } from "@remix-run/node";
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from "@remix-run/react";
+import { Container } from "./components/Container";
 import Header from "./components/Header";
 import styles from "./styles/app.css";
 
@@ -9,7 +10,7 @@ export function links() {
 
 export const meta: MetaFunction = () => ({
 	charset: "utf-8",
-	title: "New Remix App",
+	title: "MusicFinder.app",
 	viewport: "width=device-width,initial-scale=1",
 });
 
@@ -21,10 +22,12 @@ export default function App() {
 				<Links />
 			</head>
 			<body className="h-full bg-black text-white">
-				<Header />
-				<main>
-					<Outlet />
-				</main>
+				<Container>
+					<Header />
+					<main>
+						<Outlet />
+					</main>
+				</Container>
 				<ScrollRestoration />
 				<Scripts />
 				<LiveReload />
