@@ -1,29 +1,28 @@
 import { Switch } from "@headlessui/react";
-import { Fragment, useState } from "react";
+import { useState } from "react";
 
 type Props = {
 	label: string;
+	name: string;
+	value: string;
 };
 
-export function Toggle({ label }: Props) {
+export function Toggle({ label, name, value }: Props) {
 	const [enabled, setEnabled] = useState(false);
 
 	return (
-		<Switch checked={enabled} onChange={setEnabled} as={Fragment}>
-			{({ checked }) => (
-				<button
-					className={`${
-						checked ? "bg-blue-600" : "bg-gray-200"
-					} relative inline-flex h-6 w-11 items-center rounded-full`}
-				>
-					<span className="sr-only">{label}</span>
-					<span
-						className={`${
-							checked ? "translate-x-6" : "translate-x-1"
-						} inline-block h-4 w-4 transform rounded-full bg-white transition`}
-					/>
-				</button>
-			)}
-		</Switch>
+		<Switch.Group>
+			<Switch
+				checked={enabled}
+				onChange={setEnabled}
+				name={name}
+				value={value}
+				className={`${
+					enabled ? "bg-brand" : "bg-black"
+				} truncate rounded-full border-2 border-white p-4 transition-colors hover:border-brand`}
+			>
+				<span>{label}</span>
+			</Switch>
+		</Switch.Group>
 	);
 }
